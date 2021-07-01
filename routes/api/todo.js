@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     Todo.create(req.body).then((data) =>
-        res.json({ message: "book added successfully", data }).catch((err) =>
+        res.json({ message: "todo added successfully", data }).catch((err) =>
             res.status(400).json({
                 message: "unable to add new todo",
                 error: err.message,

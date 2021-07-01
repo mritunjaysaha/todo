@@ -7,7 +7,7 @@ const connectDB = require("./config/db");
 const app = express();
 
 // routes
-
+const todo = require("./routes/api/todo");
 // connect database
 connectDB();
 
@@ -19,6 +19,7 @@ app.use(express.json({ extended: false }));
 app.get("/", (req, res) => res.send("server is active"));
 
 // use routes
+app.use("/api/todo", todo);
 
 // setting up port
 
