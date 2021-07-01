@@ -2,7 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-const Todo = require("../../models/todo");
+const {
+    getAllTodo,
+    postTodo,
+    putUpdateTodo,
+    deleteTodo,
+} = require("../../controllers/todo");
 
 /**
  * @route GET api/todo
@@ -10,18 +15,7 @@ const Todo = require("../../models/todo");
  * @access public
  */
 
-router.get("/", (req, res) => {
-    Todo.find()
-        .then((todo) => {
-            console.log({ todo });
-            res.json(todo);
-        })
-        .catch((err) =>
-            res
-                .status(404)
-                .json({ message: "no todo found", error: err.message })
-        );
-});
+router.get("/", getAllTodo);
 
 /**
  * @route POST api/todo
@@ -29,34 +23,14 @@ router.get("/", (req, res) => {
  * @access public
  */
 
-router.post("/", (req, res) => {
-    Todo.create(req.body)
-        .then((data) => {
-            console.log({ data });
-            res.json({ message: "todo added successfully", data });
-        })
-        .catch((err) =>
-            res.status(400).json({
-                message: "unable to add new todo",
-                error: err.message,
-            })
-        );
-});
+router.post("/", postTodo);
 
 /**
  * @route PUT api/todo/:id
  * @description update todo
  * @access public
  */
-router.put("/:id", (req, res) => {
-    Todo.findByIdAndUpdate(req.params.id, req.body)
-        .then((todo) => res.json({ message: "updated successfully", todo }))
-        .catch((err) =>
-            res
-                .status(400)
-                .json({ error: "unable to update todo", message: err.message })
-        );
-});
+router.put("/:id", putUpdateTodo);
 
 /**
  * @route DELETE api/todo/:id
@@ -64,16 +38,6 @@ router.put("/:id", (req, res) => {
  * @access public
  */
 
-router.delete("/:id", (req, res) => {
-    Todo.findByIdAndRemove(req.params.id, req.body).then((data) =>
-        res
-            .json({ message: "todo deleted successfully", data })
-            .catch((err) =>
-                res
-                    .status(404)
-                    .json({ error: "book not found", message: err.message })
-            )
-    );
-});
+router.delete("/:id", deleteTodo);
 
 module.exports = router;
