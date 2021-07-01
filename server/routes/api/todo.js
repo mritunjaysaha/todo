@@ -12,11 +12,14 @@ const Todo = require("../../models/todo");
 
 router.get("/", (req, res) => {
     Todo.find()
-        .then((todo) => res.json(todo))
+        .then((todo) => {
+            console.log({ todo });
+            res.json(todo);
+        })
         .catch((err) =>
             res
                 .status(404)
-                .json({ message: "no todos found", error: err.message })
+                .json({ message: "no todo found", error: err.message })
         );
 });
 
