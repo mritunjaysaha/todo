@@ -1,10 +1,16 @@
-import logo from "./logo.svg";
+import { BrowserRouter, Route } from "react-router-dom";
+import { CreateTodo } from "./components/createTodo";
 import "./App.scss";
 
 function App() {
     return (
         <div className="App">
-            <header className="App-header">TODO</header>
+            <BrowserRouter>
+                <header className="App-header">
+                    {/* <Route exact path="/" component={}/> */}
+                    <Route path="/create-todo" component={CreateTodo} />
+                </header>
+            </BrowserRouter>
         </div>
     );
 }

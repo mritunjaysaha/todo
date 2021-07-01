@@ -5,7 +5,7 @@ const router = express.Router();
 const Todo = require("../../models/todo");
 
 /**
- * @route GET api/todos
+ * @route GET api/todo
  * @description get all todos
  * @access public
  */
@@ -27,14 +27,17 @@ router.get("/", (req, res) => {
  */
 
 router.post("/", (req, res) => {
-    Todo.create(req.body).then((data) =>
-        res.json({ message: "todo added successfully", data }).catch((err) =>
+    Todo.create(req.body)
+        .then((data) => {
+            console.log({ data });
+            res.json({ message: "todo added successfully", data });
+        })
+        .catch((err) =>
             res.status(400).json({
                 message: "unable to add new todo",
                 error: err.message,
             })
-        )
-    );
+        );
 });
 
 /**
