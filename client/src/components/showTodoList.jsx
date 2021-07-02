@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "../App.scss";
 
 export function ShowTodoList() {
@@ -29,6 +30,7 @@ export function ShowTodoList() {
                         </li>
                     ))}
                 </ul>
+                <Link to="/create-todo">New</Link>
             </section>
         </section>
     );
