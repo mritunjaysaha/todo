@@ -44,31 +44,37 @@ export function CreateTodo() {
             >
                 back
             </button>
-            <form onSubmit={handleSubmit} className="form-container" noValidate>
-                <label className="label" htmlFor="title">
-                    Title
-                </label>
-                <input
-                    type="text"
-                    name="title"
-                    value={data.title}
-                    onChange={handleChange}
-                    className="input"
-                />
-                <label className="label" htmlFor="description">
-                    Description
-                </label>
-                <input
-                    type="text"
-                    name="description"
-                    value={data.description}
-                    onChange={handleChange}
-                    className="input"
-                />
-                <button type="submit" className="button">
-                    create todo
-                </button>
-            </form>
+            <section className="contents">
+                <form
+                    onSubmit={handleSubmit}
+                    className="form-container"
+                    noValidate
+                >
+                    <label className="label" htmlFor="title">
+                        Title
+                    </label>
+                    <input
+                        type="text"
+                        name="title"
+                        value={data.title}
+                        onChange={handleChange}
+                        className="input"
+                    />
+                    <label className="label" htmlFor="description">
+                        Description
+                    </label>
+                    <input
+                        type="text"
+                        name="description"
+                        value={data.description}
+                        onChange={handleChange}
+                        className="input"
+                    />
+                    <button type="submit" className="button">
+                        create todo
+                    </button>
+                </form>
+            </section>
         </section>
     );
 }

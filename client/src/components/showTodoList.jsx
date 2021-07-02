@@ -19,6 +19,14 @@ export function ShowTodoList() {
             });
     }, []);
 
+    function handleDelete(e) {
+        axios.delete(`http://localhost:8000/api/todo/${e.target.name}`);
+
+        setTodo((data) => {
+            return data.filter((todo) => todo._id !== e.target.name);
+        });
+    }
+
     return (
         <section className="container">
             <button
@@ -29,13 +37,28 @@ export function ShowTodoList() {
             >
                 New
             </button>
-            <section className="list-container">
+            <section className="contents">
                 <h1>TODO</h1>
-                <ul>
+                <ul className="list-container">
                     {todo.map((data) => (
                         <li key={data._id}>
-                            <h3>{data.title}</h3>
-                            <p>{data.description}</p>
+                            <div className="title-description">
+                                <h3>{data.title}</h3>
+                                <p>{data.description}</p>
+                            </div>
+
+                            <div className="button-container">
+                                <button className="button" name={data._id}>
+                                    edit
+                                </button>
+                                <button
+                                    className="button"
+                                    name={data._id}
+                                    onClick={handleDelete}
+                                >
+                                    delete
+                                </button>
+                            </div>
                         </li>
                     ))}
                 </ul>

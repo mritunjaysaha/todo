@@ -21,35 +21,34 @@ html {
 }
 
 .App-header {
-    background-color: #282c34;
+    background-color: hsl(220, 13%, 18%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+
+    padding-top: 4rem;
 }
 
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 0.4fr 1.6fr;
+    grid-template-rows: 8rem 1.6fr;
     gap: 0px 0px;
     grid-template-areas:
         "button-back . button-new"
         "contents contents contents";
 
-    width: 80rem;
-    height: 60rem;
+    width: 120rem;
 }
 
 .button,
 .input {
     display: flex;
-    justify-content: center;
     align-items: center;
-
+    justify-content: center;
     text-transform: capitalize;
 
     border: none;
@@ -78,16 +77,86 @@ html {
     justify-self: end;
 }
 
-.list-container,
-.form-container {
+.contents {
     grid-area: contents;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    min-height: 80vh;
+    h1 {
+        margin-bottom: 4rem;
+    }
 }
 
-.input,
-.label {
-    margin-bottom: 2rem;
+.list-container {
+    display: flex;
+
+    flex-direction: column;
+
+    li {
+        background-color: hsl(220, 13%, 28%);
+        border-radius: 0.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        padding: 2rem 4rem;
+
+        min-height: 16rem;
+        height: max-content;
+        width: 20rem !important;
+
+        margin: 0 auto;
+        .title-description {
+            text-align: left;
+
+            h3 {
+                text-transform: capitalize;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                &:first-of-type {
+                    margin-right: 2rem;
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+        gap: 2rem;
+        width: 60rem;
+    }
+
+    @media only screen and (min-width: 992px) {
+        grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+        width: 120rem;
+    }
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 24rem;
+
+    font-size: 2rem;
+
+    .label {
+        margin-bottom: 0.4rem;
+    }
+
+    .input {
+        margin-bottom: 2rem;
+    }
 }
