@@ -31,18 +31,16 @@ html {
     color: white;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-
-    margin: 0 auto;
-
-    width: 80%;
-}
-
 .container {
-    border: 1px solid white;
-    width: 40rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.4fr 1.6fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "button-back . button-new"
+        "contents contents contents";
+
+    width: 80rem;
     height: 60rem;
 }
 
@@ -58,12 +56,35 @@ html {
     border-radius: 0.5rem;
 
     height: 4rem;
+    width: 24rem;
 }
 
-.button-home {
+.button {
+    display: flex;
+    margin: 0;
+}
+.button-back,
+.button-new {
     width: 8rem;
+}
 
-    margin: 2rem 0 0 2rem;
+.button-back {
+    grid-area: button-back;
+}
+
+.button-new {
+    grid-area: button-new;
+    display: flex;
+    justify-self: end;
+}
+
+.list-container,
+.form-container {
+    grid-area: contents;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .input,

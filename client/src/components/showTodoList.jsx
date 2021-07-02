@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../App.scss";
 
 export function ShowTodoList() {
     const [todo, setTodo] = useState([]);
+    let history = useHistory();
 
     useEffect(function () {
         axios
@@ -20,6 +21,14 @@ export function ShowTodoList() {
 
     return (
         <section className="container">
+            <button
+                className="button button-new"
+                onClick={() => {
+                    history.push("/create-todo");
+                }}
+            >
+                New
+            </button>
             <section className="list-container">
                 <h1>TODO</h1>
                 <ul>
@@ -30,7 +39,6 @@ export function ShowTodoList() {
                         </li>
                     ))}
                 </ul>
-                <Link to="/create-todo">New</Link>
             </section>
         </section>
     );

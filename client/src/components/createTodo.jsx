@@ -40,9 +40,9 @@ export function CreateTodo() {
                 onClick={() => {
                     history.push("/");
                 }}
-                className="button button-home"
+                className="button button-back"
             >
-                Home
+                back
             </button>
             <form onSubmit={handleSubmit} className="form-container" noValidate>
                 <label className="label" htmlFor="title">
