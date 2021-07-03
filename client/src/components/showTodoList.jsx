@@ -5,6 +5,30 @@ import { UpdateTodo } from "./updateTodo";
 
 import "../App.scss";
 
+function TodoCard({ data, handleEdit, handleDelete }) {
+    return (
+        <li key={data._id}>
+            <div className="title-description">
+                <h3>{data.title}</h3>
+                <p>{data.description}</p>
+            </div>
+
+            <div className="button-container">
+                <button className="button" name={data._id} onClick={handleEdit}>
+                    edit
+                </button>
+                <button
+                    className="button"
+                    name={data._id}
+                    onClick={handleDelete}
+                >
+                    delete
+                </button>
+            </div>
+        </li>
+    );
+}
+
 export function ShowTodoList() {
     const [todo, setTodo] = useState([]);
     const [open, setOpen] = useState(false);
@@ -56,36 +80,21 @@ export function ShowTodoList() {
                 <h1>TODO</h1>
                 <ul className="list-container">
                     {todo.map((data) => (
-                        <li key={data._id}>
-                            <div className="title-description">
-                                <h3>{data.title}</h3>
-                                <p>{data.description}</p>
-                            </div>
-
-                            <div className="button-container">
-                                <button
-                                    className="button"
-                                    name={data._id}
-                                    onClick={handleEdit}
-                                >
-                                    edit
-                                </button>
-                                <button
-                                    className="button"
-                                    name={data._id}
-                                    onClick={handleDelete}
-                                >
-                                    delete
-                                </button>
-                            </div>
-                        </li>
+                        <TodoCard
+                            data={data}
+                            handleEdit={handleEdit}
+                            handleDelete={handleDelete}
+                        />
                     ))}
                 </ul>
             </section>
             {open ? (
                 <section className="update-container">
                     <div className="update-contents">
-                        <p onClick={handleClose}>&times;</p>
+                        <p onClick={handleClose} className="close">
+                            &times;
+                        </p>
+
                         <UpdateTodo _id={id} />
                     </div>
                 </section>

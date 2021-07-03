@@ -30,27 +30,28 @@ export function UpdateTodo({ _id }) {
     }
 
     return (
-        <section className="update-container">
-            {/*the container will contain background overlay*/}
-            <div className="update-contents">
-                <form className="form-container" onSubmit={handleSubmit}>
-                    <label htmlFor="title">Title</label>
-                    <input
-                        type="text"
-                        name="title"
-                        className="input"
-                        onChange={handleChange}
-                    />
-                    <label htmlFor="description">Description</label>
-                    <input
-                        type="text"
-                        name="description"
-                        className="input"
-                        onChange={handleChange}
-                    />
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
-        </section>
+        <form className="form-container" onSubmit={handleSubmit}>
+            <label htmlFor="title" className="label">
+                Title
+            </label>
+            <input
+                type="text"
+                name="title"
+                className="input"
+                onChange={handleChange}
+            />
+            <label htmlFor="description" className="label">
+                Description
+            </label>
+            <input
+                type="text"
+                name="description"
+                className="input"
+                onChange={handleChange}
+            />
+            <button type="submit" className="button">
+                Submit
+            </button>
+        </form>
     );
 }

@@ -5,6 +5,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 html {
@@ -110,9 +111,9 @@ button {
 
         padding: 2rem 4rem;
 
-        min-height: 16rem;
+        min-height: 20rem;
         height: max-content;
-        width: 20rem !important;
+        width: 24rem !important;
 
         margin: 0 auto;
         .title-description {
@@ -158,7 +159,7 @@ button {
     font-size: 2rem;
 
     .label {
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.8rem;
     }
 
     .input {
@@ -171,8 +172,8 @@ button {
     top: 0;
     left: 0;
 
-    width: 100vw;
     height: 100vh;
+    width: 100vw;
 
     display: flex;
     justify-content: center;
@@ -181,6 +182,32 @@ button {
     background-color: rgba(0, 0, 0, 0.4);
 
     .update-contents {
-        background-color: white;
+        display: grid;
+        grid-template-areas:
+            "close"
+            "form";
+
+        background-color: hsl(220, 13%, 28%);
+
+        padding: 2rem 4rem 4rem;
+
+        border-radius: 0.5rem;
+
+        .close {
+            grid-area: close;
+            color: white;
+            font-weight: 700;
+
+            display: flex;
+            justify-content: flex-end;
+
+            margin-bottom: 4rem;
+
+            cursor: pointer;
+        }
+
+        .contents {
+            grid-area: form;
+        }
     }
 }
