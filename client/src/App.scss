@@ -11,6 +11,10 @@ html {
     font-size: 67%;
 }
 
+button {
+    cursor: pointer;
+}
+
 .App {
     text-align: center;
 }
@@ -85,6 +89,7 @@ html {
     align-items: center;
 
     min-height: 80vh;
+
     h1 {
         margin-bottom: 4rem;
     }
@@ -158,5 +163,24 @@ html {
 
     .input {
         margin-bottom: 2rem;
+    }
+}
+
+.update-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .update-contents {
+        background-color: white;
     }
 }
