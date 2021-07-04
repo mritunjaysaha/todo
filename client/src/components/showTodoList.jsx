@@ -33,24 +33,35 @@ export function ShowTodoList() {
     const [todo, setTodo] = useState([]);
     const [open, setOpen] = useState(false);
     const [id, setId] = useState("");
+    const [edited, setEdited] = useState(false);
 
     let history = useHistory();
 
-    useEffect(function () {
-        axios
-            .get("http://localhost:8000/api/todo")
-            .then((res) => {
-                console.log(res.data);
-                setTodo(res.data);
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
-    }, []);
+    useEffect(
+        function () {
+            axios
+                .get("http://localhost:8000/api/todo")
+                .then((res) => {
+                    console.log(res.data);
+                    setTodo(res.data);
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        },
+        [edited]
+    );
 
     function handleEdit(e) {
+        console.log("name: ", e.target.name);
         setId(e.target.name);
         setOpen(true);
+
+        console.log({ id });
+    }
+
+    function handleEdited() {
+        setEdited(!edited);
     }
 
     function handleDelete(e) {
@@ -95,7 +106,11 @@ export function ShowTodoList() {
                             &times;
                         </p>
 
-                        <UpdateTodo _id={id} />
+                        <UpdateTodo
+                            _id={id}
+                            handleClose={handleClose}
+                            handleEdited={handleEdited}
+                        />
                     </div>
                 </section>
             ) : (

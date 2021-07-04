@@ -28,8 +28,13 @@ exports.postTodo = (req, res) => {
 };
 
 exports.putUpdateTodo = (req, res) => {
+    console.log("id: ", req.params.id);
+    console.log("body: ", req.body);
     Todo.findByIdAndUpdate(req.params.id, req.body)
-        .then((todo) => res.json({ message: "updated successfully", todo }))
+        .then((todo) => {
+            console.log("edit", { todo });
+            return res.json({ message: "updated successfully", todo });
+        })
         .catch((err) =>
             res
                 .status(400)
