@@ -13,7 +13,7 @@ exports.getAllTodo = (req, res) => {
         );
 };
 
-exports.postTodo = (req, res) => {
+exports.postCreateTodo = (req, res) => {
     Todo.create(req.body)
         .then((data) => {
             console.log({ data });

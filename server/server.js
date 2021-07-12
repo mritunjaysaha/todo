@@ -7,7 +7,7 @@ const connectDB = require("./config/db");
 const app = express();
 
 // routes
-const todo = require("./routes/api/todo");
+const todo = require("./routes/todo");
 // connect database
 connectDB();
 

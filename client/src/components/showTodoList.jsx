@@ -53,11 +53,8 @@ export function ShowTodoList() {
     );
 
     function handleEdit(e) {
-        console.log("name: ", e.target.name);
         setId(e.target.name);
         setOpen(true);
-
-        console.log({ id });
     }
 
     function handleEdited() {
