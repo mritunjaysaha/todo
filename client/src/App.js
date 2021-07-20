@@ -5,12 +5,10 @@ import "./App.scss";
 
 function App() {
     return (
-        <div className="App">
+        <div className="app-contents">
             <BrowserRouter>
-                <header className="App-header">
-                    <Route exact path="/" component={ShowTodoList} />
-                    <Route path="/create-todo" component={CreateTodo} />
-                </header>
+                <Route exact path="/" component={ShowTodoList} />
+                <Route path="/create-todo" component={CreateTodo} />
             </BrowserRouter>
         </div>
     );

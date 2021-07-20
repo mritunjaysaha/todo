@@ -3,8 +3,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { UpdateTodo } from "./updateTodo";
 
-import "../App.scss";
-
 function TodoCard({ data, handleEdit, handleDelete }) {
     return (
         <li key={data._id}>

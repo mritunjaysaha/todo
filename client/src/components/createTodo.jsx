@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import "../App.scss";
 import axios from "axios";
 
 export function CreateTodo() {
     const [data, setData] = useState({ title: "", description: "" });
     let history = useHistory();
+
+    function handleBackButtonClick() {
+        history.push("/");
+    }
 
     function handleChange(e) {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -37,9 +40,7 @@ export function CreateTodo() {
         <section className="container">
             <button
                 type="button"
-                onClick={() => {
-                    history.push("/");
-                }}
+                onClick={handleBackButtonClick}
                 className="button button-back"
             >
                 back

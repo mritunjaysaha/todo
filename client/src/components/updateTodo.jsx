@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import "../App.scss";
 
 export function UpdateTodo({ _id, handleClose, handleEdited }) {
     const [data, setData] = useState({ title: "", description: "" });
