@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { UpdateTodo } from "./updateTodo";
 
 function TodoCard({ data, handleEdit, handleDelete }) {
@@ -32,8 +32,6 @@ export function ShowTodoList() {
     const [open, setOpen] = useState(false);
     const [id, setId] = useState("");
     const [edited, setEdited] = useState(false);
-
-    let history = useHistory();
 
     useEffect(
         function () {
@@ -74,14 +72,9 @@ export function ShowTodoList() {
 
     return (
         <section className="container">
-            <button
-                className="button button-new"
-                onClick={() => {
-                    history.push("/create-todo");
-                }}
-            >
-                New
-            </button>
+            <Link to="/create-todo" className="button button-new">
+                <button>New</button>
+            </Link>
             <section className="contents">
                 <h1>TODO</h1>
                 <ul className="list-container">

@@ -1,15 +1,10 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
 export function CreateTodo() {
     const [data, setData] = useState({ title: "", description: "" });
-    let history = useHistory();
-
-    function handleBackButtonClick() {
-        history.push("/");
-    }
 
     function handleChange(e) {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -18,14 +13,8 @@ export function CreateTodo() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        const todo = {
-            title: data.title,
-            description: data.description,
-        };
-
-        console.log({ todo });
         axios
-            .post("http://localhost:8000/api/todo", todo)
+            .post("http://localhost:8000/api/todo", data)
             .then((res) => {
                 setData({ title: "", description: "" });
                 console.log(res.data.message);
@@ -38,13 +27,12 @@ export function CreateTodo() {
 
     return (
         <section className="container">
-            <button
-                type="button"
-                onClick={handleBackButtonClick}
-                className="button button-back"
-            >
-                back
-            </button>
+            <Link to="/">
+                <button type="button" className="button button-back">
+                    back
+                </button>
+            </Link>
+
             <section className="contents">
                 <form
                     onSubmit={handleSubmit}
