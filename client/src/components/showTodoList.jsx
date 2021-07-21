@@ -71,8 +71,8 @@ export function ShowTodoList() {
 
     return (
         <section className="container">
-            <Link to="/create-todo" className="button button-new">
-                <button>New</button>
+            <Link to="/create-todo" className="button-new">
+                <button className="button">New</button>
             </Link>
             <section className="contents">
                 <h1>TODO</h1>

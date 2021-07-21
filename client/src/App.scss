@@ -19,6 +19,8 @@ button {
 .app-contents {
     background-color: hsl(220, 13%, 18%);
     min-height: 100vh;
+    height: max-content;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,8 +38,6 @@ button {
     grid-template-areas:
         "button-back . button-new"
         "contents contents contents";
-
-    width: 120rem;
 }
 
 .button,
@@ -100,18 +100,19 @@ button {
         flex-direction: column;
         justify-content: space-between;
 
-        padding: 2rem 4rem;
+        padding: 2rem;
 
         min-height: 20rem;
         height: max-content;
         width: 24rem !important;
 
-        margin: 0 auto;
+        margin: 0 auto 2rem;
         .title-description {
             text-align: left;
 
             h3 {
                 text-transform: capitalize;
+                margin-bottom: 1rem;
             }
         }
 
@@ -132,6 +133,8 @@ button {
         grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
         gap: 2rem;
         width: 60rem;
+
+        margin: 0 auto;
     }
 
     @media only screen and (min-width: 992px) {
