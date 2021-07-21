@@ -1,25 +1,23 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UpdateTodo } from "./updateTodo";
 
 function TodoCard({ data, handleEdit, handleDelete }) {
+    const { _id, title, description } = data;
+
     return (
-        <li key={data._id}>
+        <li key={_id}>
             <div className="title-description">
-                <h3>{data.title}</h3>
-                <p>{data.description}</p>
+                <h3>{title}</h3>
+                <p>{description}</p>
             </div>
 
             <div className="button-container">
-                <button className="button" name={data._id} onClick={handleEdit}>
+                <button className="button" name={_id} onClick={handleEdit}>
                     edit
                 </button>
-                <button
-                    className="button"
-                    name={data._id}
-                    onClick={handleDelete}
-                >
+                <button className="button" name={_id} onClick={handleDelete}>
                     delete
                 </button>
             </div>
@@ -31,7 +29,7 @@ export function ShowTodoList() {
     const [todo, setTodo] = useState([]);
     const [open, setOpen] = useState(false);
     const [id, setId] = useState("");
-    const [edited, setEdited] = useState(false);
+    const [update, setUpdate] = useState(false);
 
     useEffect(
         function () {
@@ -45,7 +43,7 @@ export function ShowTodoList() {
                     console.log(err.message);
                 });
         },
-        [edited]
+        [update]
     );
 
     function handleEdit(e) {
@@ -53,8 +51,9 @@ export function ShowTodoList() {
         setOpen(true);
     }
 
-    function handleEdited() {
-        setEdited(!edited);
+    function handleUpdate() {
+        console.log("update:", update, !update);
+        setUpdate(!update);
     }
 
     function handleDelete(e) {
@@ -97,7 +96,7 @@ export function ShowTodoList() {
                         <UpdateTodo
                             _id={id}
                             handleClose={handleClose}
-                            handleEdited={handleEdited}
+                            handleUpdate={handleUpdate}
                         />
                     </div>
                 </section>
