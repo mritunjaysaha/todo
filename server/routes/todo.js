@@ -40,4 +40,46 @@ router.put("/:id", putUpdateTodo);
 
 router.delete("/:id", deleteTodo);
 
+const User = require("../models/user");
+const Todo = require("../models/todo");
+
+router.post("/user", (req, res) => {
+    User.create(req.body)
+        .then((data) => res.json(data))
+        .catch((err) => res.json({ message: "error", error: err.message }));
+});
+
+router.post("/create/:userId", (req, res) => {
+    const newTodo = new Todo(req.body);
+    newTodo.save();
+
+    User.findByIdAndUpdate(
+        req.params.userId,
+        { $push: { todo: newTodo._id } },
+        { new: true, upsert: true },
+        (err, user) => {
+            if (err) {
+                res.status(400).json({ message: "Error" });
+            }
+
+            res.json({ user });
+        }
+    );
+});
+
+router.get("/all/:userId", (req, res) => {
+    User.findById(req.params.userId)
+        .populate("todo")
+        .exec((err, user) => {
+            if (err) {
+                res.status(400).json({
+                    message: "failed to populate",
+                    error: err.message,
+                });
+            }
+
+            res.json({ user });
+        });
+});
+
 module.exports = router;
