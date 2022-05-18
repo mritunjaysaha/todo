@@ -9,7 +9,7 @@ function TodoCard({ data, handleEdit, handleDelete }) {
     return (
         <li key={_id}>
             <div className="title-description">
-                <h3>{title} 123</h3>
+                <h3>{title}</h3>
                 <p>{description}</p>
             </div>
 
